@@ -1,0 +1,582 @@
+import random
+
+#criação de dicionários com as perguntas, alternativas, respostas de cada categoria
+Geografia = {
+    'geografia 1': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é o maior rio do mundo em termos de volume de água?',
+        'alternativas': { 'a': 'Rio Nilo', 'b': 'Rio Amazonas', 'c': 'Rio Tietê', 'd': 'Rio Mississipi' },
+        'resposta': 'b',#respostas tem que estar em caixa baixa
+    },
+    'geografia 2': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual dos seguintes países sul-americanos não tem uma saída para o mar?',
+        'alternativas': { 'a': 'Chile', 'b': 'Bolívia', 'c': 'Peru', 'd': 'Venezuela' },
+        'resposta': 'b',
+    },
+    'geografia 3': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é o ponto mais alto da Terra?',
+        'alternativas': { 'a': 'Monte Everest', 'b': 'Monte Kilimanjaro', 'c': 'Monte Roraima', 'd': 'Monte McKinley' },
+        'resposta': 'a',
+    },
+    'geografia 4': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é a cidade mais alta do mundo em termos de altitude?',
+        'alternativas': { 'a': 'Davos (Suíça)', 'b': 'La Paz (Bolívia)', 'c': 'La Rinconada (Peru)', 'd': 'Quito (Equador)' },
+        'resposta': 'c',
+    },
+    'geografia 5': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é a maior ilha do mundo em área?',
+        'alternativas': { 'a': 'Madagascar', 'b': 'Ilha de Páscoa', 'c': 'Ilha de Malta', 'd': 'Groenlândia' },
+        'resposta': 'd',
+    },
+    'geografia 6': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é o maior lago de água doce do mundo em termos de volume de água? ',
+        'alternativas': { 'a': 'Lago Baikal', 'b': 'Lago Vitória', 'c': 'Lago Ness', 'd': 'Lago Titicaca' },
+        'resposta': 'a',
+    },
+    'geografia 7': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é o maior país do mundo em termos de área territorial?',
+        'alternativas': { 'a': 'Estados Unidos', 'b': 'China', 'c': 'Rússia', 'd': 'Chile' },
+        'resposta': 'c',
+    },
+    'geografia 8': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é o menor país do mundo em termos de área? ',
+        'alternativas': { 'a': 'Nova Zelândia', 'b': 'Mônaco', 'c': 'San Marino', 'd': 'Vaticano ' },
+        'resposta': 'd',
+    },
+    'geografia 9': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é o maior país da América do Norte em termos de área?',
+        'alternativas': { 'a': 'Canadá', 'b': 'Estados Unidos', 'c': 'México', 'd': 'Groenlândia' },
+        'resposta': 'a',
+    },
+    'geografia 10': {
+        'categoria': 'Geografia',
+        'pergunta': 'Qual é a capital da Austrália? ',
+        'alternativas': { 'a': 'Sydney', 'b': 'Melbourne', 'c': 'Canberra', 'd': 'Brisbane' },
+        'resposta': 'c',
+    }
+}
+
+Ciencia = {
+    'ciencia 1': {
+        'categoria': 'Ciência',
+        'pergunta': 'De onde é a invenção do chuveiro elétrico?',
+        'alternativas': {'a': 'França', 'b': 'Inglaterra', 'c': 'Brasil', 'd': 'Australia'},
+        'resposta': 'c',
+    },
+    'ciencia 2': {
+        'categoria': 'Ciência',
+        'pergunta': 'Com sua conhecida frase “esse é um pequeno passo para o homem, mas um gigantesco salto para a humanidade”, esta pessoa trata-se de:',
+        'alternativas': {'a': 'Ayrton Senna', 'b': 'Neil Armstrong', 'c': 'Rodrigo Faro', 'd': 'Neil deGrasse Tyson'},
+        'resposta': 'b',
+    },
+    'ciencia 3': {
+        'categoria': 'Ciência',
+        'pergunta': 'Como é dada a classificação das plantas:',
+        'alternativas': {'a': 'Briófitas, Espermatófitas, Gimnospermas e Caule.', 'b': 'Caule, Flor, Fruto e Folha', 'c': 'Briófitas, Pteridófitas, Gimnospermas e Angiospermas', 'd': 'Caule, Pteridófitas, Espermatófitas e Fruto'},
+        'resposta': 'c',
+    },
+    'ciencia 4': {
+        'categoria': 'Ciência',
+        'pergunta': 'Atualmente, quantos elementos químicos a tabela periódica possui?',
+        'alternativas': {'a': '113', 'b': '109', 'c': '108', 'd': '118'},
+        'resposta': 'd',
+    },
+    'ciencia 5': {
+        'categoria': 'Ciência',
+        'pergunta': 'Quanto tempo a luz do Sol demora para chegar à Terra? ',
+        'alternativas': {'a': '12 minutos', 'b': '8 minutos', 'c': '12 horas', 'd': '1 dia'},
+        'resposta': 'b',
+    },
+    'ciencia 6': {
+        'categoria': 'Ciência',
+        'pergunta': 'Quais são os três predadores do reino animal reconhecidos pela habilidade de caçar em grupo, se camuflar para surpreender as presas e possuir sentidos apurados, respectivamente:',
+        'alternativas': {'a': 'Tubarão branco, crocodilo e sucuri', 'b': 'Tigre, gavião e orca', 'c': 'Hiena, urso branco e lobo cinzento', 'd': 'Orca, onça e tarântula'},
+        'resposta': 'c',
+    },
+    'ciencia 7': {
+        'categoria': 'Ciência',
+        'pergunta': 'Qual o nome do cientista que descobriu o processo de pasteurização e a vacina contra a raiva?',
+        'alternativas': {'a': 'Louis Pasteur', 'b': 'Blaise Pascal', 'c': 'Antoine Lavoisier', 'd': 'Charles Darwin'},
+        'resposta': 'a',
+    },
+    'ciencia 8': {
+        'categoria': 'Ciência',
+        'pergunta': 'As pessoas de qual tipo sanguíneo são consideradas doadores universais?',
+        'alternativas': {'a': 'Tipo A', 'b': 'Tipo O', 'c': 'Tipo B', 'd': 'Tipo AB'},
+        'resposta': 'b',
+    },
+    'ciencia 9': {
+        'categoria': 'Ciência',
+        'pergunta': 'Que substância é absorvida pelas plantas e expirada por todos os seres vivos?',
+        'alternativas': {'a': 'Oxigênio', 'b': 'Nitrogênio', 'c': 'Nitrato de Sódio', 'd': 'Dióxido de Carbono'},
+        'resposta': 'd',
+    },
+    'ciencia 10': {
+        'categoria': 'Ciência',
+        'pergunta': 'Qual o nome do criador do projeto Golden Record, que trata de um disco banhado a ouro com diversos sons da Terra que foi acoplado a Voyager 1?',
+        'alternativas': {'a': 'Carl Sagan', 'b': 'Lionel Messi', 'c': 'Marie Curie', 'd': 'Frank Sinatra'},
+        'resposta': 'a',
+    }
+}
+
+Entretenimento = {
+    'entretenimento 1': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Quem é a autora da série de livros "Harry Potter"?',
+        'alternativas': {'a': 'J.K. Rowling', 'b': 'Stephenie Meyer', 'c': 'George R.R. Martin', 'd': 'Suzanne Collins'},
+        'resposta': 'a',
+    },
+    'entretenimento 2': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Qual ator interpretou o personagem Jack Dawson no filme "Titanic" de 1997',
+        'alternativas': {'a': 'Tom Hanks', 'b': 'Brad Pitt', 'c': 'Leonardo DiCaprio', 'd': 'Johnny Depp'},
+        'resposta': 'c',
+    },
+    'entretenimento 3': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'De qual banda de rock que o cantor Freddie Mercury foi vocalista?',
+        'alternativas': {'a': 'The Beatles', 'b': 'Queen', 'c': 'Rolling Stones', 'd': 'AC/DC'},
+        'resposta': 'b',
+    },
+    'entretenimento 4': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Quantas temporadas tem a série Friends?',
+        'alternativas': {'a': '3', 'b': '4', 'c': '15', 'd': '10'},
+        'resposta': 'd',
+    },
+    'entretenimento 5': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Qual personagem é autor da frase “Não contavam com minha astúcia!”',
+        'alternativas': {'a': 'Ñoño', 'b': 'Chapolim Colorado', 'c': 'Seu Madruga', 'd': 'Chiquinha'},
+        'resposta': 'b',
+    },
+    'entretenimento 6': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Nome da série cujos personagens principais são Sheldon, Raj, Leonard, Howard e Penny?',
+        'alternativas': {'a': 'The Big Bang Theory', 'b': 'The Walking Dead', 'c': 'Friends', 'd': 'Modern Family'},
+        'resposta': 'a',
+    },
+    'entretenimento 7': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Quem é o marinheiro que adora espinafre?',
+        'alternativas': {'a': 'Cebolinha', 'b': 'Don Federico Mátalas Callando', 'c': 'Popeye', 'd': 'Capitão Haddock'},
+        'resposta': 'c',
+    },
+    'entretenimento 8': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'No filme toy story quem é o xerife cowboy?',
+        'alternativas': {'a': 'Sid', 'b': 'Woody', 'c': 'Senhor Cabeça de Batata', 'd': 'Moranguinho'},
+        'resposta': 'b',
+    },
+    'entretenimento 9': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Quem é o mestre das tartarugas ninjas?',
+        'alternativas': {'a': 'Donatello', 'b': 'Michelangelo', 'c': 'Mestre Cobra', 'd': 'Rato Splinter'},
+        'resposta': 'd',
+    },
+    'entretenimento 10': {
+        'categoria': 'Entretenimento',
+        'pergunta': 'Que tipo de médico é Stephen Strange?',
+        'alternativas': {'a': 'Neurocirurgião', 'b': 'Cardiologista', 'c': 'Psicólogo', 'd': 'Dermatologista'},
+        'resposta': 'a',
+    }
+}
+
+Historia = {
+    'historia 1': {
+        'categoria': 'História',
+        'pergunta': 'Qual o nome do presidente do Brasil que ficou conhecido como Jango?',
+        'alternativas': {'a': 'Jânio Quadros', 'b': 'Jacinto Anjos', 'c': 'João Figueiredo', 'd': 'João Goulart'},
+        'resposta': 'd',
+    },
+    'historia 2': {
+        'categoria': 'História',
+        'pergunta': 'Qual a data da Proclamação da República do Brasil?',
+        'alternativas': {'a': '15 de novembro de 1889', 'b': '16 de novembro de 1889', 'c': '15 de novembro de 1970', 'd': '14 de novembro de 1890'},
+        'resposta': 'a',
+    },
+    'historia 3': {
+        'categoria': 'História',
+        'pergunta': 'Qual dos acontecimentos seguintes não teve relação com a Guerra Fria:',
+        'alternativas': {'a': 'Guerra da Coreia', 'b': 'Guerra Civil Espanhola', 'c': 'Revolução Cubana', 'd': 'Ditaduras latino-americanas'},
+        'resposta': 'b',
+    },
+    'historia 4': {
+        'categoria': 'História',
+        'pergunta': 'Qual das alternativas apresenta os Presidentes do Brasil em ordem de sucessão?',
+        'alternativas': {'a': 'Dilma Rousseff, Lula, Jair Bolsonaro, Lula', 'b': 'Lula, Michel Temer, Jair Bolsonaro, Lula', 'c': 'Dilma Rousseff, Michel Temer, Jair Bolsonaro, Lula', 'd': 'Lula, Dilma Rousseff, Jair Bolsonaro, Lula'},
+        'resposta': 'c',
+    },
+    'historia 5': {
+        'categoria': 'História',
+        'pergunta': 'No período pré-colonial a atividade econômica que teve maior destaque foi:',
+        'alternativas': {'a': 'Pau-Brasil', 'b': 'Mineração', 'c': 'Cana-de-açúcar', 'd': 'Café'},
+        'resposta': 'a',
+    },
+    'historia 6': {
+        'categoria': 'História',
+        'pergunta': 'A primeira capital do Brasil foi:',
+        'alternativas': {'a': 'São Paulo', 'b': 'Salvador', 'c': 'São Luís', 'd': 'Brasília'},
+        'resposta': 'b',
+    },
+    'historia 7': {
+        'categoria': 'História',
+        'pergunta': 'A primeira Guerra Mundial se caracterizou pelo uso de várias tecnologias mortíferas no campo de batalha dentre as quais podemos destacar:',
+        'alternativas': {'a': 'Navios de guerra', 'b': 'Granada de mão', 'c': 'Armas Químicas', 'd': 'Rifle de repetição'},
+        'resposta': 'c',
+    },
+    'historia 8': {
+        'categoria': 'História',
+        'pergunta': 'Qual foi o primeiro metal a ser fundido pelos seres humanos no período conhecido como Idade dos Metais?',
+        'alternativas': {'a': 'Ferro', 'b': 'Ouro', 'c': 'Prata', 'd': 'Cobre'},
+        'resposta': 'd',
+    },
+    'historia 9': {
+        'categoria': 'História',
+        'pergunta': 'Foi uma característica do Feudalismo: ',
+        'alternativas': {'a': 'Uso de mão de obra escravizada em larga escala', 'b': 'Vida exclusivamente urbana', 'c': 'Diminuição do uso da moeda', 'd': 'Valorização da liberdade religiosa'},
+        'resposta': 'a',
+    },
+    'historia 10': {
+        'categoria': 'História',
+        'pergunta': 'Qual das características abaixo não se relaciona com o Nazismo? ',
+        'alternativas': {'a': 'Anticomunismo', 'b': 'Antissemitismo', 'c': 'Culto ao líder', 'd': 'Liberalismo econômico'},
+        'resposta': 'd',
+    }
+}
+
+Python = {
+    'python 1': {
+        'categoria': 'Python',
+        'pergunta': 'O que faz a função "len()" em Python?',
+        'alternativas': {'a': 'Retorna o comprimento de uma lista ou string', 'b': 'Encontra o número de linhas em um arquivo', 'c': 'Calcula o logaritmo natural', 'd': 'Arredonda um número para o inteiro mais próximo'},
+        'resposta': 'a',
+    },
+    'python 2': {
+        'categoria': 'Python',
+        'pergunta': 'Qual é a função da instrução "break" em Python?',
+        'alternativas': {'a': 'Encerra imediatamente o programa', 'b': 'Finaliza o loop atual e continua com a próxima iteração', 'c': 'Gera uma exceção', 'd': 'Define uma nova variável'},
+        'resposta': 'b',
+    },
+    'python 3': {
+        'categoria': 'Python',
+        'pergunta': 'Qual é a diferença entre as aspas simples e as aspas duplas ao definir uma string em Python?',
+        'alternativas': {'a': 'Não há diferença; ambas podem ser usadas de forma intercambiável', 'b': 'As aspas simples só podem ser usadas para strings curtas, enquanto as aspas duplas são para strings longas', 'c': 'As aspas simples são usadas para strings de uma linha e as aspas duplas para strings de várias linhas', 'd': 'As aspas duplas são usadas para strings de uma linha e as aspas simples para strings de várias linhas'},
+        'resposta': 'a',
+    },
+    'python 4': {
+        'categoria': 'Python',
+        'pergunta': 'Qual é a diferença entre append() e extend() em uma lista em Python?',
+        'alternativas': {'a': 'append() é usado para listas, e extend() é usado para strings', 'b': 'append() remove o último elemento da lista, enquanto extend() adiciona um elemento ao final', 'c': 'Ambas as funções fazem a mesma coisa', 'd': 'append() adiciona um elemento ao final da lista, enquanto extend() adiciona uma lista inteira'},
+        'resposta': 'd',
+    },
+    'python 5': {
+        'categoria': 'Python',
+        'pergunta': 'Qual é a função da instrução "import" em Python?',
+        'alternativas': {'a': 'Exporta dados para outros programas', 'b': 'Exporta dados para outros programas', 'c': 'Define uma variável', 'd': 'Importa módulos ou bibliotecas'},
+        'resposta': 'd',
+    },
+    'python 6': {
+        'categoria': 'Python',
+        'pergunta': 'Como se realiza a leitura de entrada do teclado em Python?',
+        'alternativas': {'a': 'input()', 'b': 'read()', 'c': 'get_input()', 'd': 'keyboard()'},
+        'resposta': 'a',
+    },
+    'python 7': {
+        'categoria': 'Python',
+        'pergunta': 'O que é um dicionário em Python?',
+        'alternativas': {'a': 'Uma estrutura de dados que armazena apenas números inteiros', 'b': 'Uma coleção ordenada de elementos', 'c': 'Uma estrutura de dados que armazena pares chave-valor', 'd': 'Um tipo de loop em Python'},
+        'resposta': 'c',
+    },
+    'python 8': {
+        'categoria': 'Python',
+        'pergunta': 'Como você realiza a ordenação de uma lista em Python?',
+        'alternativas': {'a': 'Utilizando a função "arrange()"', 'b': 'Com a instrução "order()"', 'c': 'Usando a função "sort()"', 'd': 'Apenas acessando os elementos diretamente'},
+        'resposta': 'c',
+    },
+    'python 9': {
+        'categoria': 'Python',
+        'pergunta': 'Qual é a principal diferença entre uma lista e um conjunto (set) em Python?',
+        'alternativas': {'a': 'As listas são mutáveis, enquanto os conjuntos são imutáveis', 'b': 'As listas podem conter elementos duplicados, enquanto os conjuntos não', 'c': 'Os conjuntos são ordenados, enquanto as listas não são', 'd': 'Não há diferença significativa entre listas e conjuntos'},
+        'resposta': 'b',
+    },
+    'python 10': {
+        'categoria': 'Python',
+        'pergunta': 'Qual é a função do operador "%" em Python?',
+        'alternativas': {'a': 'Calcula a potência de um número', 'b': 'Realiza a divisão normal', 'c': 'Calcula o resto da divisão', 'd': 'Verifica a igualdade entre dois valores'},
+        'resposta': 'c',
+    }
+}
+
+#dicionário que junta todas as perguntas das categorias escolhidas
+perguntas={}
+
+#lista com a primeira chave dos dicionários, que são: 'geografia 1', 'geografia 2'...
+lista_perguntas = list(perguntas.keys())
+
+#o score começa em 1 e vai aumentando conforme o acerto das perguntas
+score=1
+
+#ordem de premiação de cada pergunta
+premio = [0, 1500, 1500, 3000, 6000, 13000, 25000, 60000, 140000, 250000, 500000]
+
+#variáveis para controle do jogo
+acertou=1
+pular=0
+elimina=0
+
+#variáveis com códigos ANSI para imprimir colorido no terminal
+fundo_vermelho='\033[37;41m' #cor quando erra
+fundo_verde='\033[37;42m'    #cor quando acerta
+fundo_amarelo='\033[30;43m'  #cor digitação errada
+sublinhado='\033[39;49;4m'
+reset='\033[0m'              #reseta para a configuração inicial
+
+
+def premio_acumulado():   #pontuação do jogo
+  dinheiro = 0
+  for i in range(score):
+    dinheiro += premio[i] #a pontuação é a soma dos premios de cada pergunta acertada
+  return dinheiro
+
+
+def perguntas_padrao():                    #define as perguntas padrão para começo de jogo
+  global perguntas
+  global lista_perguntas
+  perguntas={}
+  perguntas.update(Geografia)              #.update serve para juntar dois dicionários
+  perguntas.update(Ciencia)
+  perguntas.update(Entretenimento)
+  perguntas.update(Historia)
+  perguntas.update(Python)                 #o padrão é ter todas as categorias
+  lista_perguntas = list(perguntas.keys())
+
+
+def escolhe_categorias(quant):     #define a quantidade de categorias que serão usadas no jogo
+  if 3<=quant<5:
+    print('\nCategorias\n'
+        + '1. Geografia\n'         #mostra para o usuário as opções de categoria
+        + '2. Ciência\n'
+        + '3. Entretenimento\n'
+        + '4. História\n'
+        + '5. Python')
+    global perguntas
+    global lista_perguntas
+    perguntas={}                   #esvazia as perguntas possíveis
+    lista_perguntas=[]
+    contador=0
+    num_usados=[]
+    while quant>contador:
+      categoria=(input('\nDigite o número das categorias desejadas, uma a uma: '))
+      #try e except servem para tratar erros na execução do código
+      try:
+        #no try vc coloca oq é para ocorrer normalmente                                                                       ,
+        num=int(categoria)
+        if num in num_usados:   #vê se o número já foi digitado antes
+          print(f'{fundo_amarelo}Categoria já escolhida, escolha outra{reset}')
+        else:                   #adiciona as perguntas das categorias escolhidas no dicionário
+          if num==1:
+            perguntas.update(Geografia)
+            contador+=1
+            num_usados.append(num)
+          elif num==2:
+            perguntas.update(Ciencia)
+            contador+=1
+            num_usados.append(num)
+          elif num==3:
+            perguntas.update(Entretenimento)
+            contador+=1
+            num_usados.append(num)
+          elif num==4:
+            perguntas.update(Historia)
+            contador+=1
+            num_usados.append(num)
+          elif num==5:
+            perguntas.update(Python)
+            contador+=1
+            num_usados.append(num)
+          else:
+            print(f'{fundo_amarelo}Entrada inválida{reset}')
+            print()
+      except:
+        #se ocorrer um erro ele vai para o except ao invés de parar o código
+        print(f'{fundo_amarelo}Entrada inválida{reset}')
+        print()
+    lista_perguntas = list(perguntas.keys())
+  else:
+    print('Você jogará com todas as categorias ativadas')
+  print('\nCategorias escolhidas, vamos voltar ao menu')
+
+
+def mostrar_pergunta():   #mostra a pergunta e vê se está certa ou errada
+  global score
+  global acertou
+  global pular
+  global elimina
+  ajuda=1
+  aleatorio = random.randint(0,len(lista_perguntas)-1)  #número aleatório entre 0 e a quantidade de perguntas
+  valor_pergunta= perguntas[lista_perguntas[aleatorio]] #usa o número gerado para escolher uma pergunta
+  while ajuda==1:
+    print(f'Categoria: {valor_pergunta["categoria"]}')                          #print da categoria
+    print(f'{sublinhado}Pergunta {score}{reset}: {valor_pergunta["pergunta"]}') #print da pergunta
+    for rchave,rvalor in valor_pergunta['alternativas'].items():                #print das alternativas
+      print(f'({rchave}) {rvalor}')
+    if pular==0 and elimina==0:
+      print('\nAjudas: \n'
+           + 'P. Pular pergunta\n'
+           + 'O. Eliminar duas alternativas')
+    elif pular==0 and elimina==1:
+      print('\nAjuda: \n'
+           + 'P. Pular pergunta')
+    elif pular==1 and elimina==0:
+      print('\nAjuda: \n'
+           + 'O. Eliminar duas alternativas')
+    resp= input('Resposta: ') #pede a resposta ao usuário
+    respo= resp.lower()       #deixa em caixa baixa, para aceitar tanto 'A' ou 'a' como resposta por exemplo
+    while True:
+      if 'a'<= respo <='d':                     #vê se o valor digitado foi a, b, c ou d
+        if respo == valor_pergunta['resposta']: #se o valor digitado for igual a resposta, mostra que acertou
+          print(f'{fundo_verde}Resposta certa{reset}')
+          score+=1                   #se acertar, aumenta o score em 1
+          acertou=1
+          ajuda=0                    #para sair do primeiro loop
+          break                      #break interrompe o loop atual
+        else:                        #se o valor for diferente da resposta, mostra que errou e termina o jogo
+          print(f'{fundo_vermelho}resposta errada{reset}')
+          score=0                    #se errar, perde tudo
+          acertou=0
+          ajuda=0
+          break
+      elif respo=='p':
+        if pular<1:
+          print(f'{sublinhado}Você escolheu pular essa pergunta\n{reset}')
+          lista_perguntas.pop(aleatorio)                        #tira a pergunta das possíveis a serem escolhidas
+          aleatorio = random.randint(0,len(lista_perguntas)-1)  #escolhe outra pergunta para mostrar ao usuário
+          valor_pergunta= perguntas[lista_perguntas[aleatorio]]
+          pular=1
+          break
+        else:
+          print(f'{fundo_amarelo}Você não pode mais pular perguntas\n{reset}')
+          break
+      elif respo=='o':
+        if elimina<1:
+          print(f'{sublinhado} Você escolheu eliminar duas alternativas\n{reset}')
+          alt=valor_pergunta['alternativas']          #dicionario só com as alternativas (e os valores) da pergunta em questão
+          alt_certa=valor_pergunta['resposta']        #alternativa certa
+          valor_certo=alt[valor_pergunta['resposta']] #valor da alternativa certa
+          del alt [valor_pergunta['resposta']]        #tira a alternativa correta do dicionario criado
+          lista_alt=list(alt.keys())                  #lista com as alternativas (sem os valores) das outras alternativas
+          alt_errada=random.choice(lista_alt)         #escolhe uma alternativa errada entre as 3 restantes
+          valor_errado=alt[alt_errada]                #valor da alternativa errada
+          restantes={alt_certa : valor_certo, alt_errada : valor_errado } #dicionario com as duas alternativas restantes
+          resto=list(restantes.keys())                                    #lista com as duas alternativas
+          resto.sort()                                                    #sort para deixar em ordem alfabética
+          print(f'{sublinhado}Pergunta {score}{reset}: {valor_pergunta["pergunta"]}')#print da pergunta
+          print(f'({resto[0]}) {restantes[resto[0]]}')                          #prints das alternativas
+          print(f'({resto[1]}) {restantes[resto[1]]}')
+          resp= input('Resposta: ')
+          respo= resp.lower()
+          elimina=1
+        else:
+          print(f'{fundo_amarelo}Você não pode mais eliminar alternativas\n{reset}')
+          break
+      else:                               #se o valor digitado for diferente de a, b, c, d, pede para digitar novamente
+        resp=input(f'{fundo_amarelo}Entrada inválida{reset}, digite novamente\n' + 'Resposta: ' )
+        respo=resp.lower()
+  lista_perguntas.pop(aleatorio)          #retira a pergunta da lista, para não repetir perguntas
+
+
+def jogo():                                                                     #sequência do game
+  global acertou
+  global score
+  print('\nVamos Começar\n' + f'Valendo R${premio[score]:,}'.replace(',', '.') )
+  # :,}'.replace(',', '.' serve para ter uma separação da pontuação por milhar e ser um ponto ao invés de vírgula
+  mostrar_pergunta()                          #mostra a primeira pergunta
+  while acertou==1:                           #se tiver acertado, pergunta se deseja continuar ou parar
+    while 0<score<11:                         #enquanto o score não for zero (perdeu) ou 11 (ganhou tudo)
+      continua=(input(f'\nDeseja ir para a próxima pergunta que vale R${premio[score]:,} ?\n'.replace(',', '.')
+                      + '0. Parar\n'
+                      + '1. Continuar\n'))
+      if continua=='1':                       #se quiser continuar, mostra a próxima pergunta
+        print(f'\nValendo R${premio_acumulado()+premio[score]:,}'.replace(',', '.'))
+        mostrar_pergunta()
+      elif continua=='0':                     #se quiser parar, mostra o premio acumulado e para o loop
+        print(f'\nParabéns! Você ganhou R${premio_acumulado():,}'.replace(',', '.'))
+        acertou=0
+        break
+      else:
+        print(f'{fundo_amarelo}Entrada inválida{reset}')
+    if score==11:
+      print('\nParabéns! Você é o novo milionário')
+      break
+  print('\nFim de Jogo\n'                     #mostra a pontuação final
+        + f'Prêmio: R${premio_acumulado():,}'.replace(',', '.'))
+
+
+def menu():                              #define o menu do jogo
+  perguntas_padrao()                     #roda a função para deixar as 5 categorias ativadas
+  escolha=0
+  while escolha==0:
+    print('\nSHOW DO MILHÃO')            #mostra para o usuário o menu
+    print('1. Instruções\n'
+        + '2. Escolher categorias\n'
+        + '3. Iniciar jogo\n'
+        + '4. Sair')
+    escolha=(input('Digite o número correspondente: ')) #pede para o usuário digitar qual opção ele quer
+    while escolha!=0:
+      if escolha=='1':                                  #se o usuário escolher 1, é printado as instruções  do  jogo
+        print('\nBem vindo ao show do milhão!\n'
+              + '\nRegras:\n'
+              + '1. O jogo tem 50 perguntas divididas em 5 categorias, sendo que você tem que escolher no mínimo 3 para jogar\n'
+              + '2. As categorias disponíveis são: Geografia, Ciência, Entretenimento, Historia e Python\n'
+              + '3. Se não quiser alterar as categorias o jogo iniciará com todas elas selecionadas\n'
+              + '4. Você terá 10 rodadas para ganhar o prêmio máximo\n'
+              + '5. Se errar a resposta perde tudo\n'
+              + '6. Você pode escolher parar para terminar com uma pontuação intermediária\n'
+              + '7. Você tem direito a pular a questão e também eliminar duas alternativas, mas somente uma vez \n'
+              + "\nBoa Sorte!" )
+        escolha=0
+      elif escolha=='2':          #se escolher 2, ele pode escolher com quais categorias ele quer jogar
+        print('')
+        while True:
+          quantidade=(input('Com quantas categorias você deseja jogar?\n'
+                          + 'Mínimo: 3\n'
+                          + 'Máximo: 5\n'
+                          + 'Quantia escolhida: '))
+          try:
+            quant=int(quantidade)
+            if quant<3 or quant>5:
+              print(f'{fundo_amarelo}Entrada inválida{reset}')
+              print()
+            else:
+              break
+          except:                 #se ocorrer um erro, mostra o print ao invés de parar o código
+            print(f'{fundo_amarelo}Entrada inválida{reset}')
+            print()
+        escolhe_categorias(quant)
+        escolha=0
+      elif escolha=='3':          #se escolher 3, inicia-se o jogo
+        jogo()
+        escolha=0
+        global score
+        global pular
+        global elimina
+        score=1                  #ao final do jogo o score e as ajudas são resetados
+        pular=0
+        elimina=0
+        perguntas_padrao()       #ao final do jogo as categorias são resetadas
+      elif escolha=='4':
+        break
+      else:
+        escolha=(input(f'{fundo_amarelo}Opção inválida{reset}, digite novamente: '))
+
+
+menu()                           #inicia o game
